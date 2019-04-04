@@ -77,6 +77,7 @@ int read_client_info(string &filename, vector<Client>&clients){
         clients.push_back(leitura);
     }
 
+    file_read_obj.close();
 
 
     return 0;

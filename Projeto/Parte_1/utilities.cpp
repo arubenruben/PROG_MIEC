@@ -76,8 +76,45 @@ string read_address(ifstream &file_read_obj){
 
     return morada_completa;
 
-
-
-
 }
 
+int date_to_seconds(string date){
+
+    char str_aux[50];
+    size_t pointer=0;
+    size_t pos_barra;
+
+
+    pos_barra=date.find('/',pointer);
+
+    date.copy(str_aux,pos_barra-pointer,pointer);
+    
+    int ano=atoi(str_aux);
+    ano=ano*365;
+
+    
+
+    pointer=pos_barra+1;
+
+    pos_barra=date.find('/',pointer);
+    
+    date.copy(str_aux,pos_barra-pointer,pointer);
+    str_aux[2]='\0';
+    
+    
+    int mes=atoi(str_aux);
+    mes*=30;
+
+    pointer=pos_barra+1;
+
+    pos_barra=(date.length());
+
+    date.copy(str_aux,pos_barra-pointer,pointer);
+    str_aux[2]='\0';    
+    int dia=atoi(str_aux);
+
+
+    return (ano+mes+dia);
+    
+
+}

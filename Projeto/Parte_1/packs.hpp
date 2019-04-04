@@ -20,3 +20,10 @@ typedef struct{
 
 
 int read_pack_info(string &filename, vector<Pack>&packs);
+
+void display_packs_info(const vector<Pack>&packs);
+void display_packs_info(const vector<Pack>&packs, string destination);
+void display_packs_info(const vector<Pack>&packs, string destination,string data_inicio,string data_fim);
+void display_packs_info(const vector<Pack>&packs, string data_inicio,string data_fim);
+
+

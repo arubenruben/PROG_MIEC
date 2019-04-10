@@ -96,7 +96,7 @@ int read_pack_info(string &filename, vector<Pack>&packs){
 
 
 void display_packs_info(const vector<Pack>&packs){
-
+    cout<<endl;
     for(int i=0;i<packs.size();i++){
         
         cout<<packs.at(i).id<<endl;
@@ -148,12 +148,21 @@ void display_packs_info(const vector<Pack>&packs, string destination,string data
     int count=0;
     
     for(int i=0;i<packs.size();i++){
+
+        int ano_inicio,mes_inicio,dia_inicio;
+        int ano_fim,mes_fim,dia_fim;
+        int aux_ano_inicio,aux_mes_inicio,aux_dia_inicio;
+        int aux_ano_fim,aux_mes_fim,aux_dia_fim;
+
+        date_parsing(data_inicio,&ano_inicio,&mes_inicio,&dia_inicio);
+        date_parsing(data_fim,&ano_fim,&mes_fim,&dia_fim);
+        date_parsing(packs.at(i).data_inicio,&aux_ano_inicio,&aux_mes_inicio,&aux_dia_inicio);
+        date_parsing(packs.at(i).data_fim,&aux_ano_fim,&aux_ano_fim,&aux_ano_fim);
         
         if((packs.at(i).attraction_point.find(destination)!=string::npos)&&
-        ((date_to_seconds(data_inicio)>=(date_to_seconds(packs.at(i).data_inicio))))&&
-        ((date_to_seconds(data_fim))<=(date_to_seconds(packs.at(i).data_fim))))
+        (ano_inicio>=aux_ano_inicio&&ano_fim<=aux_ano_fim)&&(mes_inicio>=aux_mes_inicio&&mes_fim<=aux_mes_fim)&&
+        (dia_inicio>=aux_dia_inicio&&dia_fim<=aux_dia_fim))
         {
-            
             cout<<packs.at(i).id<<endl;
             cout<<packs.at(i).attraction_point<<endl;
             cout<<packs.at(i).data_inicio<<endl;
@@ -176,15 +185,25 @@ void display_packs_info(const vector<Pack>&packs, string destination,string data
     return;
 }
 
-void display_packs_info(const vector<Pack>&packs, string data_inicio,string data_fim){int count=0;
+void display_packs_info(const vector<Pack>&packs, string data_inicio,string data_fim){
+    
+    int count=0;
     
     for(int i=0;i<packs.size();i++){
+
+        int ano_inicio,mes_inicio,dia_inicio;
+        int ano_fim,mes_fim,dia_fim;
+        int aux_ano_inicio,aux_mes_inicio,aux_dia_inicio;
+        int aux_ano_fim,aux_mes_fim,aux_dia_fim;
+
+        date_parsing(data_inicio,&ano_inicio,&mes_inicio,&dia_inicio);
+        date_parsing(data_fim,&ano_fim,&mes_fim,&dia_fim);
+        date_parsing(packs.at(i).data_inicio,&aux_ano_inicio,&aux_mes_inicio,&aux_dia_inicio);
+        date_parsing(packs.at(i).data_fim,&aux_ano_fim,&aux_ano_fim,&aux_ano_fim);
         
-        if(
-        ((date_to_seconds(data_inicio)>=(date_to_seconds(packs.at(i).data_inicio))))&&
-        ((date_to_seconds(data_fim))<=(date_to_seconds(packs.at(i).data_fim))))
+        if((ano_inicio>=aux_ano_inicio&&ano_fim<=aux_ano_fim)&&(mes_inicio>=aux_mes_inicio&&mes_fim<=aux_mes_fim)&&
+        (dia_inicio>=aux_dia_inicio&&dia_fim<=aux_dia_fim))
         {
-            
             cout<<packs.at(i).id<<endl;
             cout<<packs.at(i).attraction_point<<endl;
             cout<<packs.at(i).data_inicio<<endl;
@@ -201,7 +220,7 @@ void display_packs_info(const vector<Pack>&packs, string data_inicio,string data
 
 
     if(count==0){
-        cout<<"No packs to display with that destination"<<endl;
+        cout<<"No packs to display with on that period of time"<<endl;
     }
 
     return;

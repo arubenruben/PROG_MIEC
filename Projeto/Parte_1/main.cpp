@@ -8,17 +8,19 @@
 #include "agency.hpp"
 #include "clients.hpp"
 #include "packs.hpp"
-
+#include "menu.hpp"
 
 using namespace std;
 
+void program_exec(vector <Client> &clients,vector<Pack> &packs);
+
 extern int last_pack_id;
 
-void program_exec();
 
 int main(){
 
   string filename;
+  string lixo;
   Agency working_agency;
   vector <Client> clients;
   vector <Pack>packs;
@@ -42,12 +44,10 @@ int main(){
     return -1;
   }
 
-  program_exec();
+  
+  display_packs_info(packs, "Veneza","2019/03/03","2019/03/04");
 
-
-
-
-
+  program_exec(clients,packs);
 
 
   return 0;
@@ -56,11 +56,12 @@ int main(){
 
 
 
-void program_exec(){
+void program_exec(vector <Client> &clients,vector<Pack> &packs){
 
   int read;
 
   while(1){
+    
     cout<<endl;
     cout<<endl;
 
@@ -77,8 +78,33 @@ void program_exec(){
 
     cin>>read;
 
-    if(read==-1){
-      break;
+    switch (read)
+    {
+      case 1:
+
+        //menu_client();
+      
+        break;
+      case 2:
+
+        //menu_pack();
+        
+        break;
+      
+      case 3:
+        
+        menu_display(clients,packs);
+
+        break;
+      
+      case -1:
+        
+        return;
+        
+        break;
+
+      default:
+        break;
     }
 
   }

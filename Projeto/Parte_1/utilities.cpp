@@ -78,7 +78,7 @@ string read_address(ifstream &file_read_obj){
 
 }
 
-int date_to_seconds(string date){
+void date_parsing(string date, int *ano, int *mes, int *dia){
 
     char str_aux[50];
     size_t pointer=0;
@@ -89,11 +89,8 @@ int date_to_seconds(string date){
 
     date.copy(str_aux,pos_barra-pointer,pointer);
     
-    int ano=atoi(str_aux);
-    ano=ano*365;
-
+    *ano=atoi(str_aux);
     
-
     pointer=pos_barra+1;
 
     pos_barra=date.find('/',pointer);
@@ -102,19 +99,20 @@ int date_to_seconds(string date){
     str_aux[2]='\0';
     
     
-    int mes=atoi(str_aux);
-    mes*=30;
+    *mes=atoi(str_aux);
 
     pointer=pos_barra+1;
 
     pos_barra=(date.length());
 
     date.copy(str_aux,pos_barra-pointer,pointer);
+    
     str_aux[2]='\0';    
-    int dia=atoi(str_aux);
+    
+    *dia=atoi(str_aux);
 
 
-    return (ano+mes+dia);
+    return;
     
 
 }

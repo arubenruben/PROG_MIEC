@@ -90,8 +90,9 @@ int read_client_info(string &filename, vector<Client>&clients){
 
 void display_client_info(const vector<Client>&clients){
 
+    cout<<endl;
+    
     for(u_int i=0;i<clients.size();i++){
-
         cout<<clients.at(i).name<<endl;
         cout<<clients.at(i).NIF<<endl;
         cout<<clients.at(i).N_agregado_familiar<<endl;
@@ -107,7 +108,7 @@ void display_client_info(const vector<Client>&clients){
 }
 
 
-void display_client_info(const vector<Client> &clients, unsigned int pos)
+void display_client_info_byPos(const vector<Client> &clients, unsigned int pos)
 {
 
     if (clients.size() > pos && pos >= 0){
@@ -121,4 +122,36 @@ void display_client_info(const vector<Client> &clients, unsigned int pos)
     }
 
     return ;
+}
+
+
+
+
+void display_client_info_byNIF(const vector<Client>&clients,int NIF){
+
+    if(NIF==-1){
+        cout<<"NIF e -1, erro"<<endl;
+        exit(-1);
+    }
+    
+    for(u_int i=0;i<clients.size();i++){
+
+        if(NIF==clients.at(i).NIF){
+            cout<<endl;
+            cout<<clients.at(i).name<<endl;
+            cout<<clients.at(i).NIF<<endl;
+            cout<<clients.at(i).N_agregado_familiar<<endl;
+            cout<<clients.at(i).address<<endl;
+            cout<<clients.at(i).bought_packs<<endl;
+            
+            cout<<"::::::::::"<<endl;
+            return;
+        }
+
+
+    }
+
+    cout<<"Cliente inexistente"<<endl;
+
+    return;
 }

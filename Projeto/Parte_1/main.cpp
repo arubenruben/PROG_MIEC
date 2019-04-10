@@ -44,10 +44,11 @@ int main(){
     return -1;
   }
 
+  int ano,mes,dia;
   
-  display_packs_info(packs, "Veneza","2019/03/03","2019/03/04");
-
+  
   program_exec(clients,packs);
+
 
 
   return 0;

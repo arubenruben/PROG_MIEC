@@ -96,8 +96,8 @@ void date_parsing(string date, int *ano, int *mes, int *dia){
     pos_barra=date.find('/',pointer);
     
     date.copy(str_aux,pos_barra-pointer,pointer);
-    str_aux[2]='\0';
     
+    str_aux[2]='\0'; //tem de ser assim
     
     *mes=atoi(str_aux);
 

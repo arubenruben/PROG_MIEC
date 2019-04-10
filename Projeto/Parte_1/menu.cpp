@@ -32,7 +32,7 @@ void menu_display(const vector<Client> &client, const vector<Pack> &packs)
     cout << "5-Ver todos os pacotes disponiveis entre datas para um destino" << endl
          << endl;
 
-    cout << "-1  - Exit" << endl;
+    cout << "-1  - Return to main menu" << endl;
 
     cin >> read;
 
@@ -71,10 +71,30 @@ void menu_display(const vector<Client> &client, const vector<Pack> &packs)
       cout << "Introduzir data no formato ano/mes/dia" << endl;
       cout << "Data de inicio" << endl;
       cin >> data_inicio;
+      cout << "Data de fim" << endl;
       cin >> data_fim;
 
       display_packs_info(packs, data_inicio, data_fim);
     }
+    break;
+
+    case 5:{
+
+      string data_inicio, data_fim,destino;
+
+      cout << "Introduzir data no formato ano/mes/dia" << endl;
+      cout << "Data de inicio" << endl;
+      cin >> data_inicio;
+      cout << "Data de fim" << endl;
+      cin >> data_fim;
+      cout << "Destino"<<endl;
+      cin>>destino;
+
+      display_packs_info(packs,destino,data_inicio,data_fim);
+
+
+    }
+
     break;
 
     case -1:

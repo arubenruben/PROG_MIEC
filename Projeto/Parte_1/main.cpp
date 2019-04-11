@@ -13,6 +13,7 @@
 using namespace std;
 
 void program_exec(vector <Client> &clients,vector<Pack> &packs);
+void write_at_exit(const Agency working_agency,const vector <Client> &clients,vector <Pack> &packs);
 
 extern int last_pack_id;
 
@@ -50,6 +51,8 @@ int main(){
   program_exec(clients,packs);
 
 
+  write_at_exit(working_agency,clients,packs);
+
 
   return 0;
 }
@@ -83,7 +86,7 @@ void program_exec(vector <Client> &clients,vector<Pack> &packs){
     {
       case 1:
 
-        //menu_client();
+        menu_client(clients,packs);
       
         break;
       case 2:
@@ -115,5 +118,32 @@ void program_exec(vector <Client> &clients,vector<Pack> &packs){
 }
 
 
+void write_at_exit(const Agency working_agency,const vector<Client> &clients,vector <Pack> &packs){
 
+  ofstream file_client;
+
+  file_client.open(working_agency.file_clients.c_str(),ios::trunc);
+
+  if(file_client.fail()){
+    
+    cout<<"Erro a abrir file client"<<endl;
+
+    return;
+  }
+
+
+
+  for(int i=0;i<clients.size();i++){
+
+    file_client<<clients.at(i).name<<endl;
+    file_client<<clients.at(i).NIF<<endl;
+    file_client<<clients.at(i).N_agregado_familiar<<endl;
+    file_client<<clients.at(i).address<<endl;
+    file_client<<clients.at(i).bought_packs<<endl;
+
+  }
+
+
+  return;
+}
 

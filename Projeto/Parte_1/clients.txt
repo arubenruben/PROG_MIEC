@@ -3,9 +3,17 @@ Rui Manuel
 4
 Rua Sem Fim / 200 / 5Esq /1200‐001 / Lisboa
 10 ; 36 ; 2
-::::::::::
-Belmiro Miguel
-111987666
-2
-Avenida dos Grilos / 100 / ‐ /2300‐101 / Coimbra
+234987156
+234987156
+0
 100 ; 136 ; 20
+Ruben Almeida
+14568
+1
+Rua da Corujeira/6/1/4465-105/S.Mamede
+1;
+Francisco J. Marques
+154546
+2
+Cadeia de Custoais/4/5/-/Custoias
+2;

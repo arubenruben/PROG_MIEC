@@ -25,5 +25,6 @@ void display_packs_info(const vector<Pack>&packs);
 void display_packs_info(const vector<Pack>&packs, string destination);
 void display_packs_info(const vector<Pack>&packs, string destination,string data_inicio,string data_fim);
 void display_packs_info(const vector<Pack>&packs, string data_inicio,string data_fim);
+int search_pack_by_ID(const vector <Pack>&packs,int id);
 
 

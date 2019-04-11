@@ -8,6 +8,7 @@
 #include <vector>
 #include "clients.hpp"
 #include "utilities.hpp"
+#include "packs.hpp"
 
 
 using namespace std;
@@ -154,4 +155,92 @@ void display_client_info_byNIF(const vector<Client>&clients,int NIF){
     cout<<"Cliente inexistente"<<endl;
 
     return;
+}
+
+
+void create_new_client(vector <Client> &clients,const vector <Pack> &packs){
+
+    Client temporario;
+    string leituras;
+    int id_leitura;
+    int control_helper=1;
+    ostringstream ostr;
+
+
+        int NIF;
+        int agregado;
+        cin.clear();
+        cin.ignore(1000,'\n');
+
+        cout<<"Introduzir o nome do client"<<endl;
+        
+        getline(cin,leituras);
+        temporario.name=leituras;
+
+
+        cout<<"Introduzir o NIF do client"<<endl;
+        cin>>NIF;
+
+        if(NIF_search(clients,NIF)!=-1){
+            cout<<"Cliente ja existente, usar a opcao alterar"<<endl;
+            return;
+        }
+        temporario.NIF=NIF;
+
+        cout<<"Introduzir o Agregado familiar"<<endl;
+        cin>>agregado;
+        temporario.N_agregado_familiar=agregado;
+
+        cout<<"Introduzir a morada do cliente no formato Rua/N_Porta/Andar/Codigo-Postal/Localidade"<<endl;
+        
+        cin.clear();
+        cin.ignore(1000,'\n');
+
+
+        getline(cin,leituras);
+        temporario.address=leituras;
+        
+        
+        ostr.clear();
+    
+
+    while(control_helper){
+
+
+        cout<<"Introduzir o ID da viagem comprada pelo cliente"<<endl;
+        cin>>id_leitura;
+        
+
+        if(search_pack_by_ID(packs,id_leitura)==0){
+            cout<<"Viagem nao disponivel tente novamente"<<endl;
+            continue;
+        }else{
+            ostr<<id_leitura<<";";
+        }  
+
+        temporario.bought_packs=ostr.str();
+
+        clients.push_back(temporario);
+        
+        cout<<"Pretende introduzir mais viagens a este cliente?"<<endl<<"Se sim, prima 1, caso contrario, prima 0"<<endl;
+        cin>>control_helper;
+        
+        ostr.flush();
+    }
+
+    return;
+}
+
+
+int NIF_search(const vector<Client>&clients,int NIF){
+
+
+    for(u_int i=0;i<clients.size();i++){
+
+        if(NIF==clients.at(i).NIF){
+            return i;
+        }
+    }
+
+    return -1;
 }

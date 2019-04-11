@@ -65,7 +65,7 @@ void menu_display(const vector<Client> &client, const vector<Pack> &packs)
     }
     break;
 
-    case 4: //faulty. Resolver bug na procura de datas dos packs
+    case 4: //check
     {
       string data_inicio, data_fim;
       cout << "Introduzir data no formato ano/mes/dia" << endl;
@@ -109,4 +109,54 @@ void menu_display(const vector<Client> &client, const vector<Pack> &packs)
   }
 
   return;
+}
+void menu_client(vector <Client> &clients,const vector <Pack> &packs){
+
+    int read;
+
+    while(1){
+
+      cout<<"Introduza uma opcao"<<endl;
+      cout<<"1-Criar Cliente"<<endl;
+      cout<<"2-Alterar Cliente"<<endl;
+      cout<<"3-Remove Cliente"<<endl;
+      cout<<"-1) Retornar ao menu principal"<<endl;
+
+      cin>>read;
+
+
+      switch (read)
+      {
+      case 1:{ //check
+
+        cout<<"Caso pretenda anular primir"<<endl;
+        create_new_client(clients,packs);
+
+      }
+        
+        break;
+
+      case 2:{
+
+      }
+      break;
+
+      case 3:{
+
+      }
+
+      case -1:{
+
+        return;
+
+      }
+      break;
+
+      default:
+        cout<<"Entrada invalida"<<endl;
+        break;
+      }
+
+    }
+    return;
 }

@@ -244,4 +244,18 @@ void display_packs_info(const vector<Pack>&packs, string data_inicio,string data
 }
 
 
+int search_pack_by_ID(const vector <Pack>&packs,int id){
+
+    for(int i=0;i<packs.size();i++){
+
+        if(abs(packs.at(i).id)==id){
+            return 1;
+        }
+    }
+
+    return 0;
+
+}
+
+
 

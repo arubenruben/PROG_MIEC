@@ -4,6 +4,7 @@
 #include <vector>
 #include "clients.hpp"
 #include "packs.hpp"
+#include "utilities.hpp"
 
 using namespace std;
 
@@ -120,6 +121,8 @@ void menu_client(vector <Client> &clients,const vector <Pack> &packs){
       cout<<"1-Criar Cliente"<<endl;
       cout<<"2-Alterar Cliente"<<endl;
       cout<<"3-Remove Cliente"<<endl;
+      cout<<"4-Pacotes vendidos a um cliente"<<endl;
+      cout<<"5-Pacotes vendidos a todos os clientes"<<endl;
       cout<<"-1) Retornar ao menu principal"<<endl;
 
       cin>>read;
@@ -136,15 +139,138 @@ void menu_client(vector <Client> &clients,const vector <Pack> &packs){
         
         break;
 
-      case 2:{
+      case 2:{ //check
+        change_client(clients);
 
       }
       break;
 
-      case 3:{
+      case 3:{//check
+
+        delete_client(clients);
+
+      }
+      case 4:{//check
+        
+        int NIF;
+        int indice_ID_cliente;
+
+        string packs_bought;
+        
+        vector <int>indices;
+
+        cout<<"Introduzir o NIF do cliente"<<endl;
+        cin>>NIF;
+
+        
+        if(indice_ID_cliente=NIF_search(clients,NIF)==-1){
+          cout<<"Cliente Inexistente, inserir primeiro"<<endl;
+        }
+
+
+        packs_bought=clients.at(indice_ID_cliente).bought_packs;
+
+        id_packs_client_bought(packs_bought,indices);
+
+        display_packs_by_id(packs,indices);
+
+        
+          
+
 
       }
 
+      case 5:{
+
+
+      for(int i=0;i<clients.size();i++){
+
+        int NIF;
+
+        string packs_bought;
+        
+        vector <int>indices;
+
+        packs_bought=clients.at(i).bought_packs;
+
+        id_packs_client_bought(packs_bought,indices);
+        
+        cout<<"Cliente:"<<clients.at(i).name<<"Comprou:"<<endl;
+
+        display_packs_by_id(packs,indices);
+
+
+      }  
+      
+
+
+
+
+
+      }
+
+      break;
+
+      case -1:{
+
+        return;
+
+      }
+      break;
+
+      default:
+        cout<<"Entrada invalida"<<endl;
+        break;
+      }
+
+    }
+    return;
+}
+
+void menu_pack(vector <Client> &clients, vector <Pack> &packs){
+int read;
+
+    while(1){
+
+      cout<<"Introduza uma opcao"<<endl;
+      cout<<"1-Criar Pack"<<endl;
+      cout<<"2-Alterar Pack"<<endl;
+      cout<<"3-Remove Pack"<<endl;
+      cout<<"4-Pacotes vendidos a um cliente"<<endl;
+      cout<<"5-Pacotes vendidos a todos os clientes"<<endl;
+      cout<<"-1) Retornar ao menu principal"<<endl;
+
+      cin>>read;
+
+
+      switch (read)
+      {
+      case 1:{ //check
+
+        cout<<"Caso pretenda anular primir"<<endl;
+
+        create_new_pack(packs);
+
+
+      }
+        
+        break;
+
+      case 2:{//check
+
+        change_pack(packs);
+        
+        
+      }
+      break;
+
+      case 3:{//check
+
+        
+        delete_pack(packs);
+
+      }
+      break;
       case -1:{
 
         return;

@@ -34,6 +34,8 @@ int read_agency_info(string &filename,Agency &return_agency){
     local_agency.name=leitura_aux;
 
     getline(file_read_obj,leitura_aux);
+    
+    istream_aux.clear();
     istream_aux.str(leitura_aux);
     istream_aux>>local_agency.NIF;
 
@@ -101,6 +103,10 @@ int read_agency_info(string &filename,Agency &return_agency){
 
     return 0;
 }
+
+
+
+
 
 
 

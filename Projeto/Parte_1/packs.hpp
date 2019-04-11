@@ -27,4 +27,10 @@ void display_packs_info(const vector<Pack>&packs, string destination,string data
 void display_packs_info(const vector<Pack>&packs, string data_inicio,string data_fim);
 int search_pack_by_ID(const vector <Pack>&packs,int id);
 
+void create_new_pack(vector <Pack> &packs);
+void delete_pack(vector <Pack> &packs);
+void change_pack(vector <Pack> &packs);
+
+void display_packs_by_id(const vector <Pack> &packs,const vector <int> &indices);
+
 

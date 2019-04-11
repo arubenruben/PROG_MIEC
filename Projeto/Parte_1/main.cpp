@@ -25,6 +25,9 @@ int main(){
   Agency working_agency;
   vector <Client> clients;
   vector <Pack>packs;
+
+  cin.clear();
+
   
   cout<<"Introduzir o nome do ficheiro da agencia"<<endl;
   getline(cin,filename);
@@ -45,8 +48,7 @@ int main(){
     return -1;
   }
 
-  int ano,mes,dia;
-  
+
   
   program_exec(clients,packs);
 
@@ -91,7 +93,7 @@ void program_exec(vector <Client> &clients,vector<Pack> &packs){
         break;
       case 2:
 
-        //menu_pack();
+        menu_pack(clients,packs);
         
         break;
       
@@ -120,7 +122,7 @@ void program_exec(vector <Client> &clients,vector<Pack> &packs){
 
 void write_at_exit(const Agency working_agency,const vector<Client> &clients,vector <Pack> &packs){
 
-  ofstream file_client;
+  ofstream file_client,file_pack;
 
   file_client.open(working_agency.file_clients.c_str(),ios::trunc);
 
@@ -140,7 +142,40 @@ void write_at_exit(const Agency working_agency,const vector<Client> &clients,vec
     file_client<<clients.at(i).N_agregado_familiar<<endl;
     file_client<<clients.at(i).address<<endl;
     file_client<<clients.at(i).bought_packs<<endl;
+  
+    if(i<clients.size()-1)  {
+      file_client<<"::::::::::"<<endl;
+    }
+    
+  }
 
+  file_client.close();
+
+  file_pack.open(working_agency.file_travelpacks.c_str(),ios::trunc);
+
+  if(file_pack.fail()){
+
+    cout<<"Erro a abrir o ficheiro das agencias"<<endl;
+
+    return;
+  }
+  
+  file_pack<<packs.at(packs.size()-1).id<<endl;
+
+  for(int i=0;i<packs.size();i++){
+    
+    file_pack<<packs.at(i).id<<endl;
+    file_pack<<packs.at(i).attraction_point<<endl;
+    file_pack<<packs.at(i).data_inicio<<endl;
+    file_pack<<packs.at(i).data_fim<<endl;
+    file_pack<<packs.at(i).price_person<<endl;
+    file_pack<<packs.at(i).lugares_inicial<<endl;
+    file_pack<<packs.at(i).n_lugares_vendidos<<endl;
+  
+    if(i<packs.size()-1) {
+      file_pack<<"::::::::::"<<endl;
+    }
+    
   }
 
 

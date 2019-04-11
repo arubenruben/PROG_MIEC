@@ -24,6 +24,8 @@ void display_client_info_byPos(const vector<Client>&clients, unsigned int pos);
 void display_client_info_byNIF(const vector<Client> &clients, int NIF);
 int NIF_search(const vector<Client>&clients,int NIF);
 void create_new_client(vector <Client> &clients,const vector <Pack> &packs);
+void delete_client(vector <Client> &clients);
+void change_client(vector <Client> &clients);
 
 
 

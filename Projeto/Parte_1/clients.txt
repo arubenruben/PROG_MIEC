@@ -3,17 +3,15 @@ Rui Manuel
 4
 Rua Sem Fim / 200 / 5Esq /1200‐001 / Lisboa
 10 ; 36 ; 2
-234987156
-234987156
-0
-100 ; 136 ; 20
+::::::::::
+Belmiro Miguel
+111987666
+5
+Avenida do Conde / 100 / - / 2300-101 / Porto
+4; 136; 1
+::::::::::
 Ruben Almeida
-14568
+21554512
 1
-Rua da Corujeira/6/1/4465-105/S.Mamede
-1;
-Francisco J. Marques
-154546
-2
-Cadeia de Custoais/4/5/-/Custoias
-2;
+Rua da Corujeira/1/1/4470-101/Matosinhos
+1;2

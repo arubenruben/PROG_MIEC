@@ -27,6 +27,8 @@ void create_new_client(vector <Client> &clients,const vector <Pack> &packs);
 void delete_client(vector <Client> &clients);
 void change_client(vector <Client> &clients);
 
+void purchase(vector <Client> &clients,vector <Pack> &packs);
+
 
 
 

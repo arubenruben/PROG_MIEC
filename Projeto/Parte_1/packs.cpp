@@ -81,12 +81,11 @@ int read_pack_info(string &filename, vector<Pack> &packs)
         packs.push_back(leitura);
     }
 
-
     int last_indice;
 
-    last_indice=packs.size();
+    last_indice = packs.size();
 
-    last_pack_id=packs.at(last_indice-1).id;
+    last_pack_id = packs.at(last_indice - 1).id;
 
     file_read_obj.close();
 
@@ -254,63 +253,53 @@ int search_pack_by_ID(const vector<Pack> &packs, int id)
 
         if (abs(packs.at(i).id) == id)
         {
-            return 1;
+            return i;
         }
     }
 
     return 0;
 }
 
+void display_packs_by_id(const vector<Pack> &packs, const vector<int> &indices)
+{
 
-void display_packs_by_id(const vector <Pack> &packs,const vector <int> &indices){
-
-    
-    for(int i=0;i<indices.size();i++){
-
+    for (int i = 0; i < indices.size(); i++)
+    {
 
         int helper;
 
-        helper=indices.at(i);
+        helper = indices.at(i);
 
-        if(helper>last_pack_id){
+        if (helper > last_pack_id)
+        {
 
             //cout<<"Pack nao existente"<<endl;
 
             continue;
-
         }
 
+        for (int j = 0; j < packs.size(); j++)
+        {
 
-        for(int j=0;j<packs.size();j++){
+            if (abs(packs.at(j).id) == helper)
+            {
 
-
-            if(abs(packs.at(j).id)==helper){
-
-                helper=j;
+                helper = j;
                 break;
-
             }
-
         }
 
-
-        cout<< packs.at(helper).id<<endl;
-        cout<< packs.at(helper).attraction_point<<endl;
-        cout<< packs.at(helper).data_inicio<<endl;
-        cout<< packs.at(helper).data_fim<<endl;
-        cout<< packs.at(helper).price_person<<endl;
-        cout<< packs.at(helper).lugares_inicial<<endl;
-        cout<< packs.at(helper).n_lugares_vendidos<<endl;
-
-
+        cout << packs.at(helper).id << endl;
+        cout << packs.at(helper).attraction_point << endl;
+        cout << packs.at(helper).data_inicio << endl;
+        cout << packs.at(helper).data_fim << endl;
+        cout << packs.at(helper).price_person << endl;
+        cout << packs.at(helper).lugares_inicial << endl;
+        cout << packs.at(helper).n_lugares_vendidos << endl;
     }
-
-
 
     return;
 }
-
-
 
 void create_new_pack(vector<Pack> &packs)
 {
@@ -411,32 +400,45 @@ void change_pack(vector<Pack> &packs)
             cout << endl;
 
             cout << "Introduzir novo id" << endl;
-            cin>> packs.at(i).id;
+            cin >> packs.at(i).id;
 
             cin.clear();
-            cin.ignore(1000,'\n');
+            cin.ignore(1000, '\n');
 
             cout << "Introduzir novo Attraction point, no formato Destino- Atracoes separadas por virgula. Exemplo: Madeira - Funchal, Porto Santo" << endl;
-            getline(cin,packs.at(i).attraction_point);
+            getline(cin, packs.at(i).attraction_point);
             cout << "Introduzir nova data de inicio" << endl;
-            getline(cin,packs.at(i).data_inicio);
+            getline(cin, packs.at(i).data_inicio);
 
             cout << "Introduzir nova data de fim" << endl;
-            getline(cin,packs.at(i).data_fim);
-            
-            cout << "Inserir o preco por pessoa" << endl;
-            cin>> packs.at(i).lugares_inicial;
+            getline(cin, packs.at(i).data_fim);
 
+            cout << "Inserir o preco por pessoa" << endl;
+            cin >> packs.at(i).lugares_inicial;
 
             cout << "Inserir lugares inicialmente disponiveis" << endl;
-            cin>> packs.at(i).lugares_inicial;
+            cin >> packs.at(i).lugares_inicial;
 
-            cout<< "Inserir os lugares ja vendidos"<<endl;
-            cin>>packs.at(i).n_lugares_vendidos;
+            cout << "Inserir os lugares ja vendidos" << endl;
+            cin >> packs.at(i).n_lugares_vendidos;
 
             return;
         }
     }
 
     return;
+}
+
+int income(const vector<Pack> &packs)
+{
+
+    double sum = 0;
+
+    for (int i = 0; i < packs.size(); i++)
+    {
+
+        sum += (packs.at(i).n_lugares_vendidos * packs.at(i).price_person);
+    }
+
+    return sum;
 }

@@ -9,6 +9,7 @@
 #include "clients.hpp"
 #include "packs.hpp"
 #include "menu.hpp"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -19,6 +20,8 @@ extern int last_pack_id;
 
 
 int main(){
+
+
 
   string filename;
   string lixo;
@@ -31,6 +34,8 @@ int main(){
   
   cout<<"Introduzir o nome do ficheiro da agencia"<<endl;
   getline(cin,filename);
+  
+  system("clear");
   
   cout<<endl;
 
@@ -80,7 +85,9 @@ void program_exec(vector <Client> &clients,vector<Pack> &packs){
     
     cout<<"3-Display_info{Clients,Packs}"<<endl<<endl;
 
-    cout<<"-1  - Exit"<<endl;
+    cout<<"4-Calcular o valor vendido"<<endl<<endl;
+
+    cout<<"-1  - Exit"<<endl<<endl;
 
     cin>>read;
 
@@ -102,6 +109,17 @@ void program_exec(vector <Client> &clients,vector<Pack> &packs){
         menu_display(clients,packs);
 
         break;
+
+      case 4:{
+        
+        int value=-1;
+
+        value=income(packs);
+        
+        cout<<value;
+      }
+
+      break;
       
       case -1:
         

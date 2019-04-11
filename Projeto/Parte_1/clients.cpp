@@ -222,7 +222,7 @@ void create_new_client(vector <Client> &clients,const vector <Pack> &packs){
         cin>>id_leitura;
         
 
-        if(search_pack_by_ID(packs,id_leitura)==0){
+        if(search_pack_by_ID(packs,id_leitura)==-1){
             cout<<"Viagem nao disponivel tente novamente"<<endl;
             continue;
         }else{
@@ -345,6 +345,73 @@ void change_client(vector <Client> &clients){
     }
 
 
+    return;
+}
+
+
+
+void purchase(vector <Client> &clients,vector <Pack> &packs){
+
+      int NIF;
+      int indice_cliente;
+      int indice_pack;
+      int id_pack;
+      string auxiliar;
+
+      cout<<"Inserir o NIF do Client que vai comprar"<<endl;
+      cin>>NIF;
+
+      if(NIF_search(clients,NIF)==-1){
+
+        cout<<"Cliente inexistente"<<endl;
+
+      }else{
+        indice_cliente=NIF_search(clients,NIF);
+      }
+
+      cout<<"Inserir o Id do pack a comprar"<<endl;
+      cin>>id_pack;
+
+
+      indice_pack=search_pack_by_ID(packs,id_pack);
+
+
+      if(indice_pack==-1){
+        cout<<"Pack nao existente"<<endl;
+        return;
+      }
+
+      if(packs.at(indice_pack).id<0){
+        cout<<"Pack esgotado"<<endl;
+        return;
+      }
+
+      //se estiver tudo bem, comprar
+
+
+      auxiliar=clients.at(indice_cliente).bought_packs;
+
+      auxiliar=auxiliar+";";
+      
+      ostringstream cast;
+
+      cast.clear();
+
+      cast<<id_pack;
+
+
+
+      auxiliar=auxiliar+cast.str();
+
+      clients.at(indice_cliente).bought_packs=auxiliar;
+
+      packs.at(indice_pack).n_lugares_vendidos++;
+
+      if(packs.at(indice_pack).n_lugares_vendidos==packs.at(indice_pack).lugares_inicial){
+
+        packs.at(indice_pack).id*=-1;
+
+      }
 
     return;
 }

@@ -33,4 +33,6 @@ void change_pack(vector <Pack> &packs);
 
 void display_packs_by_id(const vector <Pack> &packs,const vector <int> &indices);
 
+int income(const vector <Pack> &packs);
+
 

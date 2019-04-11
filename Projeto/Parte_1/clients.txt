@@ -14,4 +14,4 @@ Ruben Almeida
 21554512
 1
 Rua da Corujeira/1/1/4470-101/Matosinhos
-1;2
+1;2;1;1
